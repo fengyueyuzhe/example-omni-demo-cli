@@ -1,4 +1,4 @@
-"""Command-line entry point: python -m forecast_cli [--file PATH]."""
+"""Command-line entry point: python -m forecast_cli [--file PATH] [--units c|f]."""
 
 from __future__ import annotations
 
@@ -13,10 +13,11 @@ DEFAULT_FILE = Path(__file__).resolve().parents[2] / "data" / "sample_forecast.j
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="forecast", description="Print a weekly forecast.")
     parser.add_argument("--file", type=Path, default=DEFAULT_FILE, help="forecast JSON file")
+    parser.add_argument("--units", choices=["c", "f"], default="c", help="temperature units")
     args = parser.parse_args(argv)
 
     city, days = load_forecast(args.file)
     print(f"{city}: {len(days)}-day forecast")
     for day in days:
-        print(format_day(day))
+        print(format_day(day, args.units))
     return 0

@@ -21,8 +21,16 @@ def load_forecast(path: Path) -> tuple[str, list[Day]]:
     return data["city"], [Day(**day) for day in data["days"]]
 
 
-def format_day(day: Day) -> str:
+def to_fahrenheit(celsius: float) -> float:
+    return celsius * 9 / 5 + 32
+
+
+def format_day(day: Day, units: str = "c") -> str:
+    if units == "f":
+        high, low, unit = to_fahrenheit(day.high_c), to_fahrenheit(day.low_c), "°F"
+    else:
+        high, low, unit = day.high_c, day.low_c, "°C"
     return (
         f"{day.date}  {day.condition:<13}"
-        f"{day.high_c:>5.1f}°C / {day.low_c:>5.1f}°C   rain {day.rain_chance:>3}%"
+        f"{high:>5.1f}{unit} / {low:>5.1f}{unit}   rain {day.rain_chance:>3}%"
     )
