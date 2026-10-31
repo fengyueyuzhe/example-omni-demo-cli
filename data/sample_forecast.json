@@ -1,0 +1,12 @@
+{
+  "city": "Seattle",
+  "days": [
+    {"date": "2026-11-02", "condition": "Light rain", "high_c": 11.5, "low_c": 6.0, "rain_chance": 80},
+    {"date": "2026-11-03", "condition": "Cloudy", "high_c": 12.0, "low_c": 5.5, "rain_chance": 30},
+    {"date": "2026-11-04", "condition": "Partly sunny", "high_c": 13.5, "low_c": 4.0, "rain_chance": 10},
+    {"date": "2026-11-05", "condition": "Showers", "high_c": 10.0, "low_c": 6.5, "rain_chance": 70},
+    {"date": "2026-11-06", "condition": "Rain", "high_c": 9.5, "low_c": 7.0, "rain_chance": 90},
+    {"date": "2026-11-07", "condition": "Cloudy", "high_c": 11.0, "low_c": 5.0, "rain_chance": 40},
+    {"date": "2026-11-08", "condition": "Sunny", "high_c": 14.0, "low_c": 3.5, "rain_chance": 5}
+  ]
+}
