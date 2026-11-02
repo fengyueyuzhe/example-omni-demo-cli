@@ -19,6 +19,19 @@ class ForecastTest(unittest.TestCase):
         self.assertIn("11.5°C", line)
         self.assertIn("rain  80%", line)
 
+    def test_format_day_fahrenheit(self):
+        _, days = load_forecast(DEFAULT_FILE)
+        line = format_day(days[0], "f")
+        self.assertIn("52.7°F", line)
+        self.assertIn("42.8°F", line)
+
+    def test_cli_units_flag(self):
+        out = io.StringIO()
+        with redirect_stdout(out):
+            self.assertEqual(main(["--units", "f"]), 0)
+        self.assertIn("°F", out.getvalue())
+        self.assertNotIn("°C", out.getvalue())
+
     def test_cli_prints_header_and_days(self):
         out = io.StringIO()
         with redirect_stdout(out):
